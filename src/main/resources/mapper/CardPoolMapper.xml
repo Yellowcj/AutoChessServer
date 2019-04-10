@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.xmu.autochessserver.mapper.CardPoolMapper" >
+    <resultMap id="cardPool" type="edu.xmu.autochessserver.entity.CardPool" >
+        <id column="id" property="id"  />
+        <result column="num_1" property="number1"  />
+        <result column="num_2" property="number2"  />
+        <result column="num_3" property="number3"  />
+        <result column="num_4" property="number4"  />
+        <result column="num_5" property="number5"  />
+        <result column="num_6" property="number6"  />
+    </resultMap>
+
+    <insert id="createCardPool" parameterType="edu.xmu.autochessserver.entity.CardPool" >
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO cardpool(num_1,num_2,num_3,num_4,num_5,num_6)values(#{number1},#{number2},#{number3},#{number4},#{number5},#{number6});
+    </insert>
+</mapper>

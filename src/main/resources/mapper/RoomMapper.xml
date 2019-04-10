@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.xmu.autochessserver.mapper.RoomMapper" >
+    <resultMap id="room" type="edu.xmu.autochessserver.entity.Room" >
+        <id column="id" property="id"  />
+        <result column="player_id_1" property="playerId1"  />
+        <result column="player_name_1" property="playerName1"  />
+        <result column="player_hp_1" property="healthPoint1"  />
+        <result column="chessboard_1" property="chessBoard1"  />
+        <result column="end_1" property="isEnd1"  />
+        <result column="player_id_2" property="playerId2"  />
+        <result column="player_name_2" property="playerName2"  />
+        <result column="player_hp_2" property="healthPoint2"  />
+        <result column="chessboard_2" property="chessBoard2"  />
+        <result column="end_2" property="isEnd2"  />
+        <result column="card_pool_id" property="cardPoolId"  />
+    </resultMap>
+
+    <insert id="createRoom" parameterType="edu.xmu.autochessserver.entity.Room" >
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO room(player_id_1,player_name_1,player_hp_1,chessboard_1,end_1,player_id_2,player_name_2,player_hp_2,chessboard_2,end_2,card_pool_id)values(#{playerId1},#{playerName1},#{healthPoint1},#{chessBoard1},#{isEnd1},#{playerId2},#{playerName2},#{healthPoint2},#{chessBoard2},#{isEnd2},#{cardPoolId});
+    </insert>
+
+
+
+</mapper>

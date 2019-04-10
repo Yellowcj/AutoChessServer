@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.xmu.autochessserver.mapper.PlayerMapper" >
+    <resultMap id="player" type="edu.xmu.autochessserver.entity.Player" >
+        <id column="id" property="id"  />
+        <result column="username" property="username"  />
+        <result column="password" property="password"  />
+        <result column="name" property="name"  />
+        <result column="room_id" property="roomId"  />
+    </resultMap>
+
+    <select id="getPlayerByUsernameAndPassword" resultMap="player">
+        SELECT *
+        FROM player
+        WHERE username = #{username} AND password = #{password}
+    </select>
+
+    <update id="updateRoomId">
+        UPDATE player
+        SET room_id=#{room_id}
+        WHERE id=#{id}
+    </update>
+</mapper>
